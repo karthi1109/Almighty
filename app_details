@@ -1,0 +1,90 @@
+info = []
+data = []
+t = 0
+class app_store():
+
+
+    def datas(self):
+        global info
+        global data
+        global t
+        print("enter the details")
+        t = int(input('enter the total number of apps'))
+        for i in range(t):
+            n = input("\n\nenter the {} app name:".format(i + 1))
+            info.append(n)
+            a = input("enter the {} app developer".format(i + 1))
+            info.append(a)
+            v = input("enter the {} app's version".format(i + 1))
+            info.append(v)
+            p = int(input("enter the {} app developed year".format(i + 1)))
+            info.append(p)
+            r = int(input("enter the {} app's price".format(i + 1)))
+            info.append(r)
+            data.append(info)
+            info = []
+    def p(self):
+        global t
+        global data
+        print(data)
+        for i in range(t):
+            print("\n\n{5} The name of the app is {0}, developed by {1}.\nthe version {2} published in the year {3} at the price of {4}".format(data[i][0],data[i][1],data[i][2],data[i][3],data[i][4],i+1))
+
+
+    def price_wise(self):
+        print("\n\n increasing price")
+        global t
+        global data
+        p=[]
+        for i in range(t):
+            o = data[i][4]
+            p.append(o)
+        p.sort()
+        print("\nthe app by price from low to high")
+        for i in p:
+            for j in range (t):
+                if(i == data[j][4]):
+                    print(data[j])
+    def search(self):
+        print("\n\nsearching")
+        global t
+        global data
+        while(True):
+            v=int(input(("enter  1 to search \nOR\nenter 0 to stop")))
+            if(v==1):
+                s=input("enter the developer name")
+                q=int(input("enter the developed year"))
+                p_y=[]
+                c=0
+                for i in range(t):
+                    if(q == data[i][3]):
+                        if(s == data[i][1]):
+                            print("the searched app is",data[i])
+                            c=c+1
+
+                if(c == 0):
+                    print("no apps developed by {1} in {0}".format(q, s))
+            elif(v==0):
+                return print("thankyou")
+    def two_fields(self):
+        global t
+        global data
+        year=[]
+        for i in range(t):
+            b = data[i][3]
+            year.append(b)
+        year.sort()
+        for i in year:
+            for j in range(t):
+                if(i == data[j][3]):
+                    print(data[j])
+
+
+
+
+v = app_store()
+v.datas()
+v.p()
+v.price_wise()
+v.search()
+v.two_fields()
